@@ -1,0 +1,28 @@
+.showPeopleInfo{
+    color: white;
+    background-color: #242424;
+    border: 2px solid #ddd;
+    padding: 5px; 
+    height: 12px;
+    width: 9%;
+    font-size: 1rem;
+    margin-left:2%;
+    margin-top: 4%;
+}
+.hidePeopleInfo{
+    color: white;
+    background-color: #242424;
+    border: 2px solid #ddd;
+    padding: 5px; 
+    height: 12px;
+    width: 34%;
+    font-size: 1rem;
+    margin-left:9%;
+    margin-top: 18%;
+}
+.peopleInfo{
+    margin-left: -150%;
+    font-style: italic;
+    color: tomato;
+    font-weight: bold;
+}

@@ -10,8 +10,7 @@
     font-size: 1.2rem;
     position: sticky;
     top: 0;
-    z-index: 999;
-    
+    z-index: 999; 
   }
 .navbar-container {
     display: flex;
@@ -49,11 +48,11 @@
     text-decoration: none;
     height: 100%;
     font-size: 1.4rem;
-    
+    margin-left: 250%;
   }
   
   .nav-links:hover {
-    border-bottom: 3px solid whitesmoke;
+    color: tomato;
     transition: all 0.2s ease-out;
   }
   .fa-bars {
@@ -71,6 +70,6 @@
     text-align: center;
     width: 60vw;
     justify-content: end;
-    margin-right: 2rem;
-    
+    margin-right: 2rem; 
   }
+  

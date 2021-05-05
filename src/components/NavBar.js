@@ -11,7 +11,7 @@ function NavBar(){
     return(
     <nav className = "navbar">
         <div className= "navbar-container">
-            <Link to = "/characters" className = "navbarLogo" onClick = {closeMobileMenu}>
+            <Link to = "/" className = "navbarLogo" onClick = {closeMobileMenu}>
             StarWars 
             </Link>
         <div className='menu-icon' onClick={handleClick}>

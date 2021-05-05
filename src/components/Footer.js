@@ -7,17 +7,17 @@ function Footer() {
           <section class='social-media'>
           <div class='social-media-wrap'>
           <div class='footer-logo'>
-              <Link to='/characters' className='social-logo'>
+              <Link to='/' className='social-logo'>
               StarWars 
               </Link>
             </div>
             <small class='website-rights'>Starwars © 2021</small>
             <div className='footer-link-wrapper'>
             <div class='footer-link-items'>
-                <Link className = 'character' to='/'>Home</Link>
+                <Link className = 'home' to='/'>Home</Link>
           </div>
             <div class='footer-link-items'>
-                <Link className = 'character' to='/people'>People</Link>
+                <Link className = 'people' to='/people'>People</Link>
           </div>
           </div>
           </div>

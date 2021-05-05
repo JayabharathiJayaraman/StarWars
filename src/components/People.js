@@ -1,27 +1,31 @@
 import './people.css';
-import React, { useEffect, useState} from 'react';
-
-function FetchApiData(){
-    const [people, setPeople] = useState([])
-    useEffect(async () => {
-        const response= await fetch('https://swapi.dev/api/people/?format=json');
-        console.log('Response',response);
-        const data = await response.json();
-        setPeople(data.results);
-        console.log('Data', data);
-    }, [])
-        
-    return(
-        <div className='starwars'>
-            
-        <div className='starwarsPeople'>
-                {people.map(people => (   
-                <p className = 'peopleName'>
-                 {people.name}</p>
-                ))}
-        </div>
-        </div>
-)
+import React, { Component } from 'react';
+import PeopleInfo from './PeopleInfo';
+import peopleImg from '../Image/people.jpg'
+class People extends Component {
+    render() {
+        const people = this.props.people;
+        return (
+            <>
+                <div>
+                    <img className='peopleImg' src={peopleImg} />
+                </div>
+                <h1>People</h1>
+                <div className='peopleName'>
+                    {
+                        people.map((people => {
+                            return (
+                                <div className='starwarspeople' key={people.url}>
+                                    <p className='starwarspeopleName'>{people.name}</p>
+                                    <PeopleInfo peopleInfo={people}></PeopleInfo>
+                                </div>
+                            )
+                        }
+                        ))
+                    }
+                </div>
+            </>
+        );
+    }
 }
-
-export default FetchApiData;
+export default People;
