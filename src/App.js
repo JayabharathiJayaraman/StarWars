@@ -7,12 +7,14 @@ import People from './components/People';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import axios from 'axios';
+import Search from './components/Search';
 class App extends Component{
   constructor(props){
     super(props);
     this.state = {
       people:[],
       isLoaded: false,
+      searchField:'',
     }
     this.fetchPeople = this.fetchPeople.bind(this);
   }
@@ -25,11 +27,15 @@ class App extends Component{
         people: response.data.results})
     }) 
   }
+
   componentDidMount(){
     this.fetchPeople();
   }
   render(){
-    const{people,isLoaded} = this.state;
+    const{people,isLoaded,searchField} = this.state;
+    const filteredPeoples = people.filter(people => (
+      people.name.toLowerCase().includes(searchField.toLowerCase())
+    ))
     if(!isLoaded){
       return <div>Loading..</div>;
   }
@@ -45,11 +51,13 @@ class App extends Component{
       <Home></Home>
       </Route>
       <Route exact path = '/people'>
-      <People people = {people}/>
+      <Search placeholder="SearchPeople" handleChange={(e) => this.setState({searchField:e.target.value})}></Search>
+      <People people = {filteredPeoples}/>
       </Route>
         </Switch>
         <Footer></Footer>
         </Router>
+
         </div>
         </>
     );
