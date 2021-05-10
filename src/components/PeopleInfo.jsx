@@ -19,7 +19,7 @@ class PeopleInfo extends Component {
     render() {
         const peopleInfo = this.props.peopleInfo;
         if (!this.state.expanded) {
-            return <p className='showPeopleInfo' onClick={this.open}>MoreInfo</p>
+            return <div className='showPeopleInfo' onClick={this.open}>MoreInfo</div>
         }
         return (
             <div>

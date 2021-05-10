@@ -1,3 +1,21 @@
 .homePage{
-    color: whitesmoke;
+    color: tomato;
+    font-size: 2rem;
+    font-weight: bold;
+    font-style: italic;
+    display: flex;
+}
+.homePara{
+  color: whitesmoke;
+  margin-left: 5%;
+  margin-right: auto;
+  padding: 5px;
+}
+.homePageList{
+  color: whitesmoke;
+  margin-left: 10%;
+  margin-right: auto;
+  padding: 5px;
+  min-height: 415px;
+  font-size: 2rem;
 }

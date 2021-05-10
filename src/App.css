@@ -1,7 +1,30 @@
+body{
+  background-image: url(./Image/star-wars-background.jpg);
+}
 .starwarsLogo{
   display: block;
   margin-left: auto;
   margin-right: auto;
   padding: 5px;
   width: 200px;
+}
+.peopleImg{
+  width: 100%;
+  height: 300px;
+   object-fit: cover;
+}
+@media screen and (max-width: 960px) {
+.peopleImg{
+      width: 950px;
+      height: 200px;
+       
+}
+}
+@media screen and (max-width: 414px) {
+  .peopleImg{
+  width: 100%;
+      height: 250px;
+       object-fit: contain;
+       }
+      
 }

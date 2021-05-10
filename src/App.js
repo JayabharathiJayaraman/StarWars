@@ -8,28 +8,33 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import axios from 'axios';
 import Search from './components/Search';
+import peopleImg from './Image/people.jpg';
+import InfiniteScroll from 'react-infinite-scroll-component';
 class App extends Component{
   constructor(props){
     super(props);
     this.state = {
+      page: 1,
       people:[],
       isLoaded: false,
       searchField:'',
-    }
-    this.fetchPeople = this.fetchPeople.bind(this);
-  }
-  fetchPeople(){
-    return axios.get('https://swapi.dev/api/people/?format=json')
-    .then((response) => {
-      console.log('Response', response.data.results);    
-      this.setState({
-        isLoaded: true,
-        people: response.data.results})
-    }) 
+    };  
   }
 
   componentDidMount(){
     this.fetchPeople();
+  }
+  fetchPeople(){
+    const{page,people} = this.state;
+    return axios.get(`https://swapi.dev/api/people/?page=${page}&format=json`)
+    .then((response) => {
+      console.log('Response', response.data.results);    
+      this.setState({
+        isLoaded: true,
+        people: ([...people, ...response.data.results]),
+        page:page+1})
+        
+    }) 
   }
   render(){
     const{people,isLoaded,searchField} = this.state;
@@ -40,21 +45,48 @@ class App extends Component{
       return <div>Loading..</div>;
   }
   else {
+   const  fetchPeople = ()=>{
+      const{page,people} = this.state;
+      if (page<=9){
+      return axios.get(`https://swapi.dev/api/people/?page=${page}&format=json`)
+      .then((response) => {
+        console.log('Response', response.data.results);    
+        this.setState({
+          isLoaded: true,
+          people: ([...people, ...response.data.results]),
+          page:page+1})
+      }) 
+    }
+    }
     return(
 <>
-    <div><br></br>
-    <img className='starwarsLogo' src={starwarsLogo}/><br></br>
+    <div><br/>
+    <img className='starwarsLogo' src={starwarsLogo}/>
     <Router>
     <NavBar/>
     <Switch>
     <Route exact path = '/'>
       <Home></Home>
       </Route>
+      <div className='star'>
       <Route exact path = '/people'>
-      <Search placeholder="SearchPeople" handleChange={(e) => this.setState({searchField:e.target.value})}></Search>
+      <div className = 'peopleImg'>
+        <img className='peopleImg' src={peopleImg} />
+    </div>
+    <h1>People</h1>
+     
+     <InfiniteScroll dataLength={this.state.people.length} next={fetchPeople} hasMore={true}   
+     endMessage={
+       <p style={{ textAlign: 'center' }}>
+       <b>Yay! You have seen it all</b>
+       </p>
+     }>
+        <Search placeholder="SearchPeople" handleChange={(e) => this.setState({searchField:e.target.value})}></Search>
       <People people = {filteredPeoples}/>
+      </InfiniteScroll> 
       </Route>
-        </Switch>
+      </div>
+        </Switch> 
         <Footer></Footer>
         </Router>
 

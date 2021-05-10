@@ -13,6 +13,7 @@ class People extends Component {
                             return (
                                 <div className='starwarspeople' key={people.url}>
                                     <p className='starwarspeopleName'>{people.name}</p>
+                                    <a></a>
                                     <PeopleInfo peopleInfo={people}></PeopleInfo>
                                 </div>
                             )
