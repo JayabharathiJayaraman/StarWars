@@ -6,14 +6,13 @@ class People extends Component {
     render() {
         const people = this.props.people;
         return (
-            <>   
+            <>
                 <div className='peopleName'>
                     {
                         people.map((people => {
                             return (
                                 <div className='starwarspeople' key={people.url}>
                                     <p className='starwarspeopleName'>{people.name}</p>
-                                    <a></a>
                                     <PeopleInfo peopleInfo={people}></PeopleInfo>
                                 </div>
                             )

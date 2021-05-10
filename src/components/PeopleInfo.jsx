@@ -1,5 +1,6 @@
 import './peopleInfo.css';
 import React, { Component } from 'react';
+
 class PeopleInfo extends Component {
     constructor(props) {
         super(props);
@@ -23,8 +24,8 @@ class PeopleInfo extends Component {
         }
         return (
             <div>
-                <p className = 'hidePeopleInfo'onClick={this.close}>HideInfo</p>
-                <ul className = 'peopleInfo'>
+                <p className='hidePeopleInfo' onClick={this.close}>HideInfo</p>
+                <ul className='peopleInfo'>
                     <li>Gender: {peopleInfo.gender}</li>
                     <li>BirthDate: {peopleInfo.birth_year}</li>
                 </ul>
